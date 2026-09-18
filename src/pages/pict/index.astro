@@ -1,0 +1,226 @@
+---
+import PageLayout from '@/layouts/CommonPage.astro'
+import MasonryGrid from '@/components/pict/MasonryGrid.astro'
+import { extractTumblrImages } from '@/utils/tumblr'
+
+const headings: any[] = [] // Remove headings so TOC doesn't show up
+
+const tumblrUsername = 'pluvia-sk'
+let images: {
+  id: string | number
+  url: string
+  title: string
+  tags: string[]
+  width?: number
+  height?: number
+}[] = []
+
+const predefinedCategories = ['Original', 'Character Design', 'work', 'Sketch', 'Fanart']
+// 使用 Map 來儲存主分類及其下的子分類
+const categoriesMap = new Map<string, Set<string>>()
+predefinedCategories.forEach((cat) => categoriesMap.set(cat, new Set()))
+
+try {
+  const res = await fetch(`https://${tumblrUsername}.tumblr.com/api/read/json?num=50`)
+  const text = await res.text()
+
+  if (text.includes('<!DOCTYPE html>')) {
+    throw new Error(
+      'Tumblr returned HTML, probably redirecting to login_required. The blog must be public.'
+    )
+  }
+
+  const jsonString = text.replace('var tumblr_api_read = ', '').replace(/;\s*$/, '')
+  const data = JSON.parse(jsonString)
+
+  data.posts.forEach((post: any) => {
+    let title = ''
+    const postImages = extractTumblrImages(post)
+    const previewImage = postImages[0]
+
+    if (post.type === 'photo') {
+      title = post['photo-caption']?.replace(/(<([^>]+)>)/gi, '').trim() || ''
+    } else if (post.type === 'regular' && post['regular-body']) {
+      if (previewImage) {
+        title =
+          post['regular-title'] ||
+          post['regular-body']
+            .replace(/(<([^>]+)>)/gi, '')
+            .substring(0, 50)
+            .trim()
+      }
+    }
+
+    if (previewImage) {
+      const postTags = post.tags || []
+
+      // 將標籤分為主分類與子分類
+      const mainCatsForPost = postTags.filter(
+        (tag: string) =>
+          predefinedCategories.includes(tag.toLowerCase()) || predefinedCategories.includes(tag)
+      )
+
+      // 子分類排除主分類，且排除四位數年份 (例如 2022, 2023)
+      const subCatsForPost = postTags.filter((tag: string) => {
+        const isMainCat =
+          predefinedCategories.includes(tag.toLowerCase()) || predefinedCategories.includes(tag)
+        const isYear = /^(19|20)\d{2}$/.test(tag.trim())
+        return !isMainCat && !isYear
+      })
+
+      // 將子分類加入對應的主分類下
+      mainCatsForPost.forEach((mainCat: string) => {
+        // 為了處理大小寫，找出真正的 key
+        const key = predefinedCategories.find((c) => c.toLowerCase() === mainCat.toLowerCase())
+        if (key) {
+          subCatsForPost.forEach((sub: string) => categoriesMap.get(key)!.add(sub))
+        }
+      })
+
+      images.push({
+        id: post.id,
+        url: previewImage.previewUrl,
+        title: title,
+        tags: postTags,
+        width: previewImage.width,
+        height: previewImage.height
+      })
+    }
+  })
+} catch (error) {
+  console.error('Tumblr fetch failed:', error)
+  images = [
+    {
+      id: 'failed1',
+      url: 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809',
+      title: 'Fetch Failed - Gradient 1',
+      tags: ['Original', 'Sketch']
+    },
+    {
+      id: 'failed2',
+      url: 'https://images.unsplash.com/photo-1557683316-973673baf926',
+      title: 'Fetch Failed - Gradient 2',
+      tags: ['Character Design']
+    }
+  ]
+}
+---
+
+<PageLayout title='PICT' {headings} view>
+  <div slot='sidebar' class='flex flex-col gap-4'>
+    <h3 class='font-semibold text-lg'>Categories</h3>
+    <ul class='flex flex-col gap-2 category-list select-none'>
+      <li>
+        <div class='relative group flex items-center'>
+          <span
+            class='absolute top-[5%] w-[2px] h-[90%] rounded transition-colors duration-300 indicator is-active [&.is-active]:bg-primary'
+          ></span>
+          <button
+            class='category-btn line-clamp-2 px-3 py-1 ms-2 text-foreground/75 transition-all hover:text-foreground text-left w-[calc(100%-0.5rem)] [&.is-active]:font-medium [&.is-active]:text-primary [&.is-active]:bg-muted rounded-r-md is-active'
+            data-category='All'
+          >
+            All
+          </button>
+        </div>
+      </li>
+      {
+        predefinedCategories.map((mainCat) => {
+          const subCats = Array.from(categoriesMap.get(mainCat) || [])
+          return (
+            <li>
+              <div class='relative group flex items-center'>
+                <span class='absolute top-[5%] w-[2px] h-[90%] rounded transition-colors duration-300 indicator [&.is-active]:bg-primary' />
+                <button
+                  class='category-btn line-clamp-2 px-3 py-1 ms-2 text-foreground/75 transition-all hover:text-foreground text-left w-[calc(100%-0.5rem)] [&.is-active]:font-medium [&.is-active]:text-primary [&.is-active]:bg-muted rounded-r-md'
+                  data-category={mainCat}
+                >
+                  {mainCat}
+                </button>
+              </div>
+              {subCats.length > 0 && (
+                <ul class='pl-4 mt-1 hidden flex-col gap-1 subcategory-list border-l border-border/50 ml-1'>
+                  {subCats.map((subCat) => (
+                    <li>
+                      <div class='relative group flex items-center'>
+                        <span class='absolute top-[5%] w-[2px] h-[90%] rounded transition-colors duration-300 indicator [&.is-active]:bg-primary' />
+                        <button
+                          class='category-btn text-sm line-clamp-2 px-3 py-1 ms-2 text-foreground/75 transition-all hover:text-foreground text-left w-[calc(100%-0.5rem)] [&.is-active]:font-medium [&.is-active]:text-primary [&.is-active]:bg-muted rounded-r-md'
+                          data-category={subCat}
+                        >
+                          # {subCat}
+                        </button>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          )
+        })
+      }
+    </ul>
+  </div>
+
+  <p>Here is my picture gallery.</p>
+
+  <MasonryGrid images={images} />
+</PageLayout>
+
+<script>
+  // Client-side filtering logic
+  const buttons = document.querySelectorAll('.category-btn')
+  const indicators = document.querySelectorAll('.indicator')
+  const items = document.querySelectorAll('.masonry-item')
+  const subLists = document.querySelectorAll('.subcategory-list')
+
+  // Filter items
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      // 1. Update active styling
+      buttons.forEach((b) => b.classList.remove('is-active'))
+      indicators.forEach((ind) => ind.classList.remove('is-active'))
+
+      btn.classList.add('is-active')
+      const siblingIndicator = btn.previousElementSibling
+      if (siblingIndicator) {
+        siblingIndicator.classList.add('is-active')
+      }
+
+      // 2. Expand/Collapse logic
+      const parentLi = (e.currentTarget as HTMLElement).closest('li')
+      // Is this a main category click?
+      const siblingSubList = parentLi?.querySelector('.subcategory-list')
+
+      // 隱藏所有子目錄
+      subLists.forEach((list) => {
+        list.classList.add('hidden')
+        list.classList.remove('flex')
+      })
+
+      // 如果點擊的是主分類，就展開自己的子目錄
+      if (siblingSubList) {
+        siblingSubList.classList.remove('hidden')
+        siblingSubList.classList.add('flex')
+      } else {
+        // 如果點擊的是子分類，則保持父層的主分類展開
+        const parentOfSubList = (e.currentTarget as HTMLElement).closest('.subcategory-list')
+        if (parentOfSubList) {
+          parentOfSubList.classList.remove('hidden')
+          parentOfSubList.classList.add('flex')
+        }
+      }
+
+      // 3. 圖片過濾邏輯
+      const selectedCategory = btn.getAttribute('data-category')?.toLowerCase()
+
+      items.forEach((item) => {
+        const itemTags = (item.getAttribute('data-tags') || '').toLowerCase().split(',')
+        if (selectedCategory === 'all' || itemTags.includes(selectedCategory!)) {
+          ;(item as HTMLElement).style.display = 'block'
+        } else {
+          ;(item as HTMLElement).style.display = 'none'
+        }
+      })
+    })
+  })
+</script>

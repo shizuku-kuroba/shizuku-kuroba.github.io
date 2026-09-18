@@ -1,0 +1,165 @@
+---
+import { Icon } from 'astro-pure/user'
+
+interface Props {
+  username: string
+}
+
+const { username } = Astro.props
+const profileUrl = `https://github.com/${username}`
+---
+
+<section class='github-activity not-prose my-6' data-github-activity data-username={username}>
+  <div class='mb-4 flex flex-wrap items-center justify-between gap-3'>
+    <div class='flex items-center gap-2.5'>
+      <Icon name='github' class='size-5' />
+      <div>
+        <h2 class='text-base font-semibold'>GitHub Activities</h2>
+        <p class='text-sm text-muted-foreground'>@{username}</p>
+      </div>
+    </div>
+    <a
+      href={profileUrl}
+      target='_blank'
+      rel='noreferrer'
+      class='rounded-full border px-3 py-1.5 text-sm transition-colors hover:border-primary hover:text-primary'
+    >
+      View profile ↗
+    </a>
+  </div>
+
+  <div class='overflow-hidden rounded-2xl border bg-muted/35 p-4 sm:p-5'>
+    <div class='overflow-x-auto pb-2'>
+      <img
+        src={`https://ghchart.rshah.org/659eb9/${username}`}
+        alt={`${username}'s GitHub contribution graph`}
+        class='h-auto min-w-[680px] max-w-none opacity-90 dark:opacity-75'
+        width='828'
+        height='128'
+        loading='lazy'
+      />
+    </div>
+
+    <div class='mt-4 border-t pt-4'>
+      <p class='mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground'>
+        Recent public activity
+      </p>
+      <ol class='grid gap-2.5' data-activity-list aria-live='polite'>
+        <li class='rounded-xl border bg-background/70 px-4 py-3 text-sm text-muted-foreground'>
+          Loading GitHub activity…
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<script>
+  type GitHubEvent = {
+    type: string
+    created_at: string
+    repo: { name: string }
+    payload: Record<string, unknown>
+  }
+
+  const activityText = (event: GitHubEvent) => {
+    const payload = event.payload
+
+    switch (event.type) {
+      case 'PushEvent': {
+        const commits = Array.isArray(payload.commits) ? payload.commits.length : 0
+        return `Pushed ${commits || 'new'} ${commits === 1 ? 'commit' : 'commits'}`
+      }
+      case 'CreateEvent':
+        return `Created ${String(payload.ref_type ?? 'repository')}`
+      case 'ForkEvent':
+        return 'Forked a repository'
+      case 'WatchEvent':
+        return 'Starred a repository'
+      case 'IssuesEvent':
+        return `${capitalize(String(payload.action ?? 'Updated'))} an issue`
+      case 'IssueCommentEvent':
+        return 'Commented on an issue'
+      case 'PullRequestEvent':
+        return `${capitalize(String(payload.action ?? 'Updated'))} a pull request`
+      case 'PullRequestReviewEvent':
+        return 'Reviewed a pull request'
+      case 'ReleaseEvent':
+        return `${capitalize(String(payload.action ?? 'Published'))} a release`
+      case 'PublicEvent':
+        return 'Made a repository public'
+      default:
+        return event.type.replace(/Event$/, '').replace(/([a-z])([A-Z])/g, '$1 $2')
+    }
+  }
+
+  const capitalize = (value: string) => value.charAt(0).toUpperCase() + value.slice(1)
+
+  const renderEvent = (event: GitHubEvent, locale: string) => {
+    const item = document.createElement('li')
+    item.className = 'rounded-xl border bg-background/70 px-4 py-3'
+
+    const row = document.createElement('div')
+    row.className = 'flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-4'
+
+    const summary = document.createElement('span')
+    summary.className = 'text-sm'
+    summary.textContent = activityText(event)
+
+    const date = document.createElement('time')
+    date.className = 'shrink-0 text-xs text-muted-foreground'
+    date.dateTime = event.created_at
+    date.textContent = new Intl.DateTimeFormat(locale, {
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    }).format(new Date(event.created_at))
+
+    const repository = document.createElement('a')
+    repository.href = `https://github.com/${event.repo.name}`
+    repository.target = '_blank'
+    repository.rel = 'noreferrer'
+    repository.className = 'mt-1 block w-fit text-sm text-primary hover:underline'
+    repository.textContent = event.repo.name
+
+    row.append(summary, date)
+    item.append(row, repository)
+    return item
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-github-activity]').forEach(async (activity) => {
+    const username = activity.dataset.username
+    const list = activity.querySelector<HTMLOListElement>('[data-activity-list]')
+    if (!username || !list) return
+
+    try {
+      const response = await fetch(
+        `https://api.github.com/users/${encodeURIComponent(username)}/events/public?per_page=6`,
+        { headers: { Accept: 'application/vnd.github+json' } }
+      )
+      if (!response.ok) throw new Error(`GitHub returned ${response.status}`)
+
+      const events = (await response.json()) as GitHubEvent[]
+      list.replaceChildren()
+
+      if (events.length === 0) {
+        const empty = document.createElement('li')
+        empty.className =
+          'rounded-xl border bg-background/70 px-4 py-3 text-sm text-muted-foreground'
+        empty.textContent = 'No recent public activity.'
+        list.append(empty)
+        return
+      }
+
+      const locale = document.documentElement.lang || 'en-US'
+      list.append(...events.map((event) => renderEvent(event, locale)))
+    } catch {
+      const fallback = document.createElement('li')
+      fallback.className =
+        'rounded-xl border bg-background/70 px-4 py-3 text-sm text-muted-foreground'
+      fallback.textContent =
+        'GitHub activity is temporarily unavailable. Please visit the profile above.'
+      list.replaceChildren(fallback)
+    }
+  })
+</script>

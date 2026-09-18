@@ -1,0 +1,73 @@
+---
+export interface Props {
+  images: {
+    id: string | number
+    url: string
+    title?: string
+    width?: number
+    height?: number
+    tags?: string[]
+  }[]
+}
+
+const { images } = Astro.props
+---
+
+<div class='masonry-grid'>
+  {
+    images.map((image) => (
+      <div
+        class='masonry-item group relative overflow-hidden rounded-xl bg-muted mb-4 break-inside-avoid'
+        data-tags={image.tags?.join(',') || ''}
+      >
+        <a
+          href={`/pict/${image.id}`}
+          data-title={image.title || ''}
+          data-description={image.title || ''}
+        >
+          <img
+            src={image.url}
+            alt={image.title || 'Gallery image'}
+            width={image.width}
+            height={image.height}
+            loading='lazy'
+            class='zoomable w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105'
+          />
+          {image.title && (
+            <div class='absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
+              <p class='text-white text-sm font-medium m-0'>{image.title}</p>
+            </div>
+          )}
+        </a>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .masonry-grid {
+    column-count: 2;
+    column-gap: 0.5rem; /* Reduced gap slightly for mobile so images aren't too small */
+    padding: 1rem 0;
+  }
+
+  /* Responsive column counts */
+  @media (min-width: 640px) {
+    .masonry-grid {
+      column-count: 2;
+      column-gap: 1rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .masonry-grid {
+      column-count: 3;
+    }
+  }
+
+  .masonry-item {
+    /* Prevents an item from being split across columns */
+    break-inside: avoid;
+    transform: translateZ(0); /* Force hardware acceleration for smoother hover */
+  }
+</style>

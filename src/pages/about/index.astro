@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets'
+import topImage from '@/assets/IMG_20260517_004107.jpg'
 import { Button, Collapse, Spoiler, Timeline } from 'astro-pure/user'
 import PageLayout from '@/layouts/CommonPage.astro'
 import Substats from '@/components/about/Substats.astro'
@@ -6,254 +8,165 @@ import ToolSection from '@/components/about/ToolSection.astro'
 
 const headings = [
   { depth: 2, slug: 'hobbies', text: 'Hobbies' },
-  { depth: 2, slug: 'tools', text: 'Tools' },
-  { depth: 2, slug: 'social-networks', text: 'Social Networks' },
-  { depth: 2, slug: 'gossips', text: 'Gossips' },
-  { depth: 2, slug: 'about-blog', text: 'About Blog' }
+  { depth: 2, slug: 'about-black-butler', text: 'To Black Butler' },
+  { depth: 2, slug: 'readme', text: 'README' },
+  { depth: 2, slug: 'favorites', text: 'Favorites' },
+  { depth: 2, slug: 'social-networks', text: 'Social Networks' }
 ]
 ---
 
 <PageLayout title='About' {headings} comment>
-  <p>Developer / Designer</p>
+  <Image src={topImage} alt='Top Image' class='mb-6 rounded-xl' />
+  <p>Master's student / Developer / Designer / Artist / Writer</p>
   <p>
-    Lorem ipsum dolor sit amet, vidit suscipit at mei. Quem denique mea id. Usu ei regione indoctum
-    dissentiunt, cu meliore fuisset mei, vel quod voluptua ne. Ex dicat impedit mel, at eum oratio
-    possit voluptatum.
+    黒羽 雫（くろば しずく），可以直接叫我「雫」。
   </p>
   <p>
-    My motto: Stay hungry, Stay foolish. <Spoiler>这里可以夹私货，比如为什么要演奏春日影！</Spoiler>
+    一隻內斂的俄羅斯藍貓，玩心盎然又怕生。平時深深栽在固定幾個坑裡，偶爾會冒出小小勇氣爬出來，嘗試新事物與社交。生活的追求是希望能成為心目中想成為的人。<br />
+    喜歡貓咪、電玩遊戲，也是黑執事長年粉絲。
   </p>
-  <Button title='Sponsor Me' class='w-fit' href='/projects#sponsorship' variant='ahead' />
+  <blockquote class='mt-4 border-l-4 border-primary pl-4 italic text-muted-foreground'>
+    Après la pluie, le beau temps.
+  </blockquote>
 
-  {/* general-talk */}
+  {/* hobbies */}
   <h2 id='hobbies'>Hobbies</h2>
   <ul>
-    <li>Lorem ipsum dolor sit amet, vidit suscipit at mei.</li>
-    <li>
-      Quem denique mea id. Usu ei regione indoctum dissentiunt, cu meliore fuisset mei, vel quod
-      voluptua ne.
-    </li>
-    <li>Ex dicat impedit mel, at eum oratio possit voluptatum.</li>
-    <li>Impetus fuisset ullamcorper pri cu, his posse iisque ad, aliquam honestatis usu id.</li>
+    <li><strong>繪畫創作：</strong>曾短暫失去熱忱，但目前正循著內心的聲音，慢慢重拾作畫最純粹的快樂與動機。</li>
+    <li><strong>AI 共創：</strong>喜歡與 AI 激盪靈感，共同創作專屬的夢文與夢圖。</li>
+    <li><strong>電玩遊戲：</strong>熱愛沉浸在各式各樣的遊戲世界中體驗不同的故事。</li>
+    <li><strong>音樂狂熱：</strong>一旦遇到心動的歌曲，就會開啟單曲循環模式，連續聽上一整個禮拜也不會膩。</li>
   </ul>
 
-  {/* tools */}
-  <h2 id='tools'>Tools</h2>
-  <p>Current support tools as follow:</p>
+  {/* black-butler */}
+  <h2 id='about-black-butler'>To Black Butler</h2>
+  <p>
+    深坑資歷 12 年，主推賽巴斯，但其實《黑執事》裡的大家我都很喜歡。非常欣賞 枢やな 老師精緻的畫風，以及對服裝與歷史細節的極致講究。<br/>
+    也因為很喜歡賽巴斯，帶有一點微夢女屬性（雖然夢了容易 OOC 所以很難夢）。而在這裡必須嚴肅聲明：<strong>黑執事不是 BL，拒吃賽謝 CP。</strong>
+  </p>
+  <blockquote class='mt-4 border-l-4 border-muted-foreground/50 pl-4 italic text-muted-foreground'>
+    「如果沒有《黑執事》，我大概也不會出現在這裡。」
+  </blockquote>
+  <p class='mt-4'>
+    看著角色們在逆境中努力、在黑暗的世界裡掙扎求生存的模樣，總能深深觸動我。每次看到他們那麼拼命，我就會想：「他們都能做到，我為什麼不行？我遇到的困難根本比不上他們。」<br/>
+    <strong>「我也得努力，才配得上喜歡他們。」</strong> 這就是角色給予我最大的力量。
+  </p>
+
+  {/* general-talk */}
+  <h2 id='readme'>README</h2>
+  <ul class='mt-5'>
+    <li>
+      <strong>歡迎認識</strong><br />
+      對不熟的人會變成社恐模式，所以在公開的網路環境上不常發文，大部分都發友限，但有同坑的話非常歡迎來找我聊天或一起玩！我只是缺乏勇氣所以比較被動一點。
+    </li>
+    <li class='mt-3'>
+      <strong>忙碌</strong><br />
+      碩士研究生，平時繁忙於作業與論文，圖和文的更新進度都會很慢，如果我沒有回到訊息或留言的話，不是我討厭你，是我真的太忙了。
+    </li>
+    <li class='mt-3'>
+      <strong>注意事項</strong>
+      <ul class='mt-1'>
+        <li>交流以禮貌發言為前提</li>
+        <li>不吃BL和百合</li>
+        <li>不喜歡對任何角色有冒犯的言論與創作</li>
+        <li>圖和文都［無断転載·使用禁止］</li>
+      </ul>
+    </li>
+  </ul>
+
+  {/* favorites */}
+  <h2 id='favorites'>Favorites</h2>
+  <p>Here are some of my favorite works:</p>
   <ToolSection
     class='mb-5'
-    title='Design'
+    title='Anime & Manga'
     tools={[
       {
-        name: 'Photoshop',
-        description: 'Picture Editing',
-        href: 'https://www.adobe.com/products/photoshop',
-        icon: import('@/assets/tools/photoshop.svg?raw')
+        name: '黑執事',
+        description: 'Black Butler',
+        href: 'https://www.blackbutler.tv/',
+        icon: 'https://api.iconify.design/lucide:book-open.svg'
       },
       {
-        name: 'Illustrator',
-        description: 'Vector Drawing',
-        href: 'https://www.adobe.com/products/illustrator',
-        icon: import('@/assets/tools/illustrator.svg?raw')
-      },
-      {
-        name: 'After Effects',
-        description: 'Motion Graphics',
-        href: 'https://www.adobe.com/products/aftereffects',
-        icon: import('@/assets/tools/aftereffects.svg?raw')
-      },
-      {
-        name: 'Premiere Pro',
-        description: 'Video Editing',
-        href: 'https://www.adobe.com/products/premiere',
-        icon: import('@/assets/tools/premiere.svg?raw')
+        name: '地。關於地球的運動',
+        description: 'Orb: On the Movements of the Earth',
+        href: 'https://anime-chi.jp/',
+        icon: 'https://api.iconify.design/lucide:book-open.svg'
       }
     ]}
   />
   <ToolSection
     class='mb-5'
-    title='Productivity'
+    title='Game'
     tools={[
       {
-        name: 'Chrome',
-        description: 'Browser',
-        href: 'https://www.google.com/chrome/',
-        icon: import('@/assets/tools/chrome.svg?raw')
+        name: "Baldur's Gate 3",
+        description: 'RPG',
+        href: 'https://baldursgate3.game/',
+        icon: 'https://api.iconify.design/lucide:gamepad-2.svg'
       },
       {
-        name: 'Firefox',
-        description: 'Browser',
-        href: 'https://www.mozilla.org/en-US/firefox',
-        icon: import('@/assets/tools/firefox.svg?raw')
+        name: 'Clair Obscur: Expedition 33',
+        description: 'RPG',
+        href: 'https://www.expedition33.com/',
+        icon: 'https://api.iconify.design/lucide:gamepad-2.svg'
       },
       {
-        name: 'Notion',
-        description: 'Note Taking',
-        href: 'https://www.notion.so/',
-        icon: import('@/assets/tools/notion.svg?raw')
+        name: 'Persona 5',
+        description: 'JRPG',
+        href: 'https://p5a.jp/',
+        icon: 'https://api.iconify.design/lucide:gamepad-2.svg'
       },
       {
-        name: 'Typora',
-        description: 'Markdown Editor',
-        href: 'https://typora.io/',
-        icon: import('@/assets/tools/typora.svg?raw')
-      }
-    ]}
-  />
-  <ToolSection
-    class='mb-5'
-    title='Development'
-    tools={[
-      {
-        name: 'VS Code',
-        description: 'IDE',
-        href: 'https://code.visualstudio.com/',
-        icon: import('@/assets/tools/vscode.svg?raw')
+        name: 'ツイステ',
+        description: 'Disney Twisted-Wonderland',
+        href: 'https://twisted-wonderland.aniplex.co.jp/',
+        icon: 'https://api.iconify.design/lucide:gamepad-2.svg'
       },
       {
-        name: 'Neovim',
-        description: 'IDE',
-        href: 'https://neovim.io/',
-        icon: import('@/assets/tools/neovim.svg?raw')
-      },
-      {
-        name: 'Sublime Text',
-        description: 'IDE',
-        href: 'https://www.sublimetext.com/',
-        icon: import('@/assets/tools/sublime.svg?raw')
-      }
-    ]}
-  />
-  <ToolSection
-    class='mb-5'
-    title='Environment'
-    tools={[
-      {
-        name: 'Arch Linux',
-        description: 'Linux Distribution',
-        href: 'https://archlinux.org/',
-        icon: import('@/assets/tools/archlinux.svg?raw')
-      },
-      {
-        name: 'Ubuntu 24.04 LTS',
-        description: 'Linux Distribution',
-        href: 'https://ubuntu.com/',
-        icon: import('@/assets/tools/ubuntu.svg?raw')
-      },
-      {
-        name: 'MacOS Tahoe',
-        description: 'MacBook Air',
-        href: 'https://www.apple.com/macos/',
-        icon: import('@/assets/tools/apple.svg?raw')
-      },
-      {
-        name: 'Windows 11',
-        description: 'Framework Laptop 16',
-        href: 'https://news.microsoft.com/windows11-general-availability/',
-        icon: import('@/assets/tools/windows11.svg?raw')
+        name: 'Final Fantasy',
+        description: 'JRPG',
+        href: 'https://na.finalfantasy.com/',
+        icon: 'https://api.iconify.design/lucide:gamepad-2.svg'
       }
     ]}
   />
 
   {/* social-networks */}
   <h2 id='social-networks'>Social Networks</h2>
-  <p>
-    Lorem ipsum dolor sit amet, vidit suscipit at mei. Quem denique mea id. Usu ei regione indoctum
-    dissentiunt, cu meliore fuisset mei, vel quod voluptua ne.
-  </p>
   <Substats
     stats={[
       {
         platform: 'GitHub',
         icon: 'github',
-        link: 'https://github.com/cworld1',
+        link: 'https://github.com/shizuku-kuroba',
         text: 'followers',
-        api: 'github/cworld1'
+        api: 'github/shizuku-kuroba'
       },
       {
-        platform: 'Telegram',
-        icon: 'telegram',
-        color: '#2ca5e0',
-        link: 'https://t.me/cworld0_cn',
-        text: 'subscribers',
-        api: 'telegram/cworld0_cn'
+        platform: 'Twitter',
+        icon: 'x',
+        link: 'https://twitter.com/Pluvia_SK',
+        text: ''
       },
       {
-        platform: 'Weibo',
-        icon: 'weibo',
-        color: '#e71f19',
-        link: 'https://weibo.com/cworld0',
-        text: 'followers',
-        api: 'weibo/5501674056'
+        platform: 'Instagram',
+        icon: 'instagram',
+        link: 'https://www.instagram.com/Pluvia_SK/',
+        text: ''
       },
       {
-        platform: 'Steam',
-        icon: 'steam',
-        color: '#50769d',
-        link: 'https://steamcommunity.com/id/cworld',
-        text: 'games',
-        api: 'steamgames/76561199021278120'
+        platform: 'Plurk',
+        icon: 'plurk',
+        link: 'https://www.plurk.com/AyaneRin',
+        text: ''
+      },
+      {
+        platform: 'Pixiv',
+        icon: 'pixiv',
+        link: 'https://www.pixiv.net/users/82532733',
+        text: ''
       }
     ]}
   />
-
-  {/* gossips */}
-  <h2 id='gossips'>Gossips</h2>
-  <Collapse title='Lorem ipsum'>
-    Lorem ipsum dolor sit amet, vidit suscipit at mei. Quem denique mea id. Usu ei regione indoctum
-    dissentiunt, cu meliore fuisset mei, vel quod voluptua ne. Ex dicat impedit mel, at eum oratio
-    possit voluptatum.
-  </Collapse>
-
-  {/* about-blog */}
-  <h2 id='about-blog'>About Blog</h2>
-  <p>Website history:</p>
-  <Timeline
-    events={[
-      {
-        date: '2024-04-29',
-        content:
-          'Website refactored using <a href="https://astro.build/" target="_blank">Astro</a> and <a href="https://github.com/srleom/astro-theme-resume" target="_blank">Astro Theme Resume</a>'
-      },
-      {
-        date: '2024-07-26',
-        content:
-          'Website abstracted as a theme and published on <a href="https://github.com/cworld1/astro-theme-pure"target="_blank">Github</a>'
-      },
-      {
-        date: '2024-07-27',
-        content: 'Began writing website docs'
-      }
-    ]}
-  />
-  <p>
-    The smooth operation and personalized customization of website also rely on the resources and
-    technical support provided by the following excellent projects/service providers:
-  </p>
-  <ul>
-    <li>Domain: <a href='#' target='_blank'>Vercel</a></li>
-    <li>
-      Framework & Theme: <a href='https://astro.build/' target='_blank'>Astro</a> + <a
-        href='https://github.com/cworld1/astro-theme-pure'
-        target='_blank'>Astro Theme Pure</a
-      >
-    </li>
-    <li>
-      Site hosting: <a href='https://vercel.com/' target='_blank'>Vercel</a>
-    </li>
-    <li>
-      CI/CD: <a href='https://vercel.com/workflow' target='_blank'>Vercel Workflow</a>
-    </li>
-    <!-- <li>Resources speedup: <a href='https://cdn.cbd.int/' target='_blank'>CBD CDN</a></li> -->
-    <li>Comment system: <a href='https://waline.js.org' target='_blank'>Waline</a></li>
-    <li>
-      Visits: <a href='https://supabase.com/' target='_blank'>Supabase</a> +
-      <a href='https://waline.js.org/' target='_blank'>Waline</a>
-    </li>
-    <li>
-      Other statistics: <a href='https://github.com/spencerwooo/substats' target='_blank'
-        >Substats</a
-      >
-    </li>
-  </ul>
 </PageLayout>

@@ -16,5 +16,7 @@ export const socialLinks = [
   'bilibili',
   'zhihu',
   'coolapk',
-  'netease'
+  'netease',
+  'plurk',
+  'pixiv'
 ] as const
