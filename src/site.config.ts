@@ -96,8 +96,8 @@ export const theme: ThemeUserConfig = {
     },
     /** Blog page size for pagination (optional) */
     blogPageSize: 8,
-    // Currently support weibo, x, bluesky
-    share: ['weibo', 'x', 'bluesky']
+    // Currently support weibo, x, bluesky, plurk, threads
+    share: ['weibo', 'x', 'plurk', 'threads']
   }
 }
 

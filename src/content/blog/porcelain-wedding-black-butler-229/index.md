@@ -15,7 +15,7 @@ language: 'Chinese'
 draft: false
 ---
 
-> 封面圖片來源：[Yen Press](https://images.yenpress.com/imgs/9798855450279.jpg?w=408&h=612&type=books&s=f657f3376745aa00aba7202f1a5585ca)
+*封面圖片來源：[Yen Press](https://images.yenpress.com/imgs/9798855450279.jpg?w=408&h=612&type=books&s=f657f3376745aa00aba7202f1a5585ca)*
 
 《黑執事》迎來連載二十週年，最新一話的扉頁中，枢やな老師以一組潔白的瓷器作為畫面的主要意象。
 
@@ -88,4 +88,5 @@ draft: false
 [2] Lee, C. (2001). _Wedding Anniversaries: From Paper to Diamond_. Ryland Peters & Small.
 
 [3] Stimpson, G. (1948). _Information Roundup_. Harper & Brothers.
+
 [4] Post, E. (1922). _Etiquette in Society, Business, Politics, and at Home_. Funk & Wagnalls.

@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets'
 import type { InferEntrySchema } from 'astro:content'
 
+import { cn } from '../../utils'
 import { FormattedDate, Icon } from '../user'
 
 interface Props {
@@ -17,16 +18,29 @@ const {
 const dateTimeOptions: Intl.DateTimeFormatOptions = {
   month: 'short'
 }
+
+const heroSource = heroImage?.src
+const isPortraitHero =
+  heroSource && typeof heroSource !== 'string' && heroSource.height > heroSource.width
 ---
 
 {
   heroImage && (
-    <div class='hero-image relative mb-6'>
+    <div
+      class={cn(
+        'hero-image relative mb-6 w-full max-w-[65ch]',
+        isPortraitHero && 'h-60 sm:h-72'
+      )}
+    >
       <Image
         alt={heroImage.alt || title}
-        class='cover-image relative z-10 h-auto w-full max-w-[65ch] rounded-2xl object-contain'
+        class={cn(
+          'cover-image relative z-10 w-full max-w-[65ch] rounded-2xl',
+          isPortraitHero ? 'h-full object-cover' : 'h-auto object-contain'
+        )}
         fetchpriority='high'
         loading='eager'
+        style={isPortraitHero ? 'object-position:center 32%' : undefined}
         {...heroImage}
       />
       <Image
@@ -34,7 +48,11 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
         fetchpriority='high'
         loading='eager'
         id='blurImage'
-        class='absolute end-0 top-4 z-0 mt-0 h-full max-w-[65ch] rounded-3xl opacity-60 transition-opacity duration-300'
+        class={cn(
+          'absolute end-0 top-3 z-0 mt-0 h-full w-full max-w-[65ch] rounded-3xl opacity-60 transition-opacity duration-300',
+          isPortraitHero ? 'object-cover' : 'object-contain'
+        )}
+        style={isPortraitHero ? 'object-position:center 32%' : undefined}
         {...heroImage}
       />
     </div>

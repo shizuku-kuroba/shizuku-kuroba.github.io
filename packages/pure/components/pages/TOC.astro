@@ -131,4 +131,20 @@ const toc = generateToc(headings)
   toc-heading :global(.toc-item) {
     display: flow-root;
   }
+
+  toc-heading :global(.toc-item.highlight) {
+    color: #659eb9 !important;
+  }
+
+  toc-heading :global(.highlight-bg) {
+    background-color: #659eb9 !important;
+  }
+
+  :global(html.dark) toc-heading :global(.toc-item.highlight) {
+    color: #9cc7d8 !important;
+  }
+
+  :global(html.dark) toc-heading :global(.highlight-bg) {
+    background-color: #9cc7d8 !important;
+  }
 </style>

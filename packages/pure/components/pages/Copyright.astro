@@ -17,16 +17,29 @@ const {
 } = Astro.props
 
 const image = typeof heroImage?.src === 'string' ? heroImage?.src : (heroImage?.src?.src ?? '')
+const pageUrl = Astro.url.toString()
+const shareText = `${title}\n${pageUrl}`
 
 const shares = {
   weibo: {
-    link: `http://service.weibo.com/share/share.php?url=${Astro.url}&title=${title}&pic=${image}`
+    label: '微博',
+    link: `https://service.weibo.com/share/share.php?url=${encodeURIComponent(pageUrl)}&title=${encodeURIComponent(title)}&pic=${encodeURIComponent(image)}`
   },
   x: {
-    link: `https://x.com/intent/tweet?text='${title}'&url='${Astro.url}'&via='${config.author}'`
+    label: 'X',
+    link: `https://x.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(pageUrl)}&via=${encodeURIComponent(config.author)}`
   },
   bluesky: {
-    link: `https://bsky.app/intent/compose?text=${title}%0A${Astro.url}`
+    label: 'Bluesky',
+    link: `https://bsky.app/intent/compose?text=${encodeURIComponent(shareText)}`
+  },
+  plurk: {
+    label: '噗浪',
+    link: `https://www.plurk.com/?qualifier=shares&status=${encodeURIComponent(`${pageUrl} (${title})`)}`
+  },
+  threads: {
+    label: 'Threads',
+    link: `https://www.threads.net/intent/post?text=${encodeURIComponent(shareText)}`
   }
 } as const
 ---
@@ -95,7 +108,10 @@ const shares = {
           <a
             href={shares[share].link}
             target='_blank'
+            rel='noopener noreferrer'
             id={`share-${share}`}
+            aria-label={`分享到${shares[share].label}`}
+            title={`分享到${shares[share].label}`}
             class='group rounded-full bg-muted p-1 text-muted-foreground transition-colors hover:text-primary sm:p-1.5'
           >
             <Icon class='size-5' name={share} />
@@ -110,14 +126,17 @@ const shares = {
 </div>
 
 <div class='mx-6 rounded-b-xl border border-t-0 px-3 pb-1.5 pt-1 sm:mx-8 sm:px-4'>
-  <a
-    href='/projects#sponsorship'
-    class='flex items-center justify-between text-muted-foreground no-underline'
-    target='_blank'
+  <div
+    class='flex cursor-not-allowed items-center justify-between text-muted-foreground/75'
+    aria-label='贊助功能建置中'
+    role='status'
   >
-    <span>Buy me a cup of coffee ☕.</span>
-    <Icon class='box-content size-5 p-1' name='receive-money' />
-  </a>
+    <span>贊助功能準備中 ☕</span>
+    <span class='flex items-center gap-2'>
+      <span class='rounded-full bg-muted px-2 py-0.5 text-[10px] font-medium tracking-wider'>COMING SOON</span>
+      <Icon class='box-content size-5 p-1 opacity-60' name='receive-money' />
+    </span>
+  </div>
 </div>
 
 <style>
