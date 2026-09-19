@@ -4,6 +4,7 @@ export interface Props {
     id: string | number
     url: string
     title?: string
+    description?: string
     width?: number
     height?: number
     tags?: string[]
@@ -23,19 +24,24 @@ const { images } = Astro.props
         <a
           href={`/pict/${image.id}`}
           data-title={image.title || ''}
-          data-description={image.title || ''}
+          data-description={image.description || ''}
         >
           <img
             src={image.url}
-            alt={image.title || 'Gallery image'}
+            alt={image.title || image.description || 'Gallery image'}
             width={image.width}
             height={image.height}
             loading='lazy'
             class='zoomable w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105'
           />
-          {image.title && (
+          {(image.title || image.description) && (
             <div class='absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
-              <p class='text-white text-sm font-medium m-0'>{image.title}</p>
+              {image.title && <h3 class='m-0 text-sm font-medium text-white'>{image.title}</h3>}
+              {image.description && (
+                <p class='m-0 mt-1 line-clamp-2 text-xs leading-relaxed text-white/80'>
+                  {image.description}
+                </p>
+              )}
             </div>
           )}
         </a>

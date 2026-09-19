@@ -42,12 +42,23 @@ const postDate = data.updatedDate ?? data.publishDate
   >
     {
       detailed && data.heroImage && (
-        <Image
-          alt={data.heroImage.alt || data.title}
-          class='cover-image absolute end-0 top-0 z-0 h-2/3 w-full rounded-2xl object-cover opacity-50 transition-opacity duration-300 group-hover/card:opacity-70 md:h-full md:w-3/5'
-          loading='eager'
-          {...data.heroImage}
-        />
+        typeof data.heroImage.src === 'string' ? (
+          <img
+            alt={data.heroImage.alt || data.title}
+            class='cover-image absolute end-0 top-0 z-0 h-2/3 w-full rounded-2xl object-cover opacity-50 transition-opacity duration-300 group-hover/card:opacity-70 md:h-full md:w-3/5'
+            height={data.heroImage.height}
+            loading='eager'
+            src={data.heroImage.src}
+            width={data.heroImage.width}
+          />
+        ) : (
+          <Image
+            alt={data.heroImage.alt || data.title}
+            class='cover-image absolute end-0 top-0 z-0 h-2/3 w-full rounded-2xl object-cover opacity-50 transition-opacity duration-300 group-hover/card:opacity-70 md:h-full md:w-3/5'
+            loading='eager'
+            {...data.heroImage}
+          />
+        )
       )
     }
 

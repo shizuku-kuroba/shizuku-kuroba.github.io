@@ -5,6 +5,11 @@ export type TumblrImage = {
   height?: number
 }
 
+export type TumblrPostContent = {
+  title: string
+  body: string
+}
+
 type TumblrPhoto = {
   original_size?: { url?: string; width?: number; height?: number }
   alt_sizes?: { url?: string; width?: number; height?: number }[]
@@ -19,6 +24,22 @@ type TumblrPost = {
 
 const decodeAttribute = (value: string) =>
   value.replaceAll('&amp;', '&').replaceAll('&quot;', '"').replaceAll('&#39;', "'")
+
+const htmlToText = (value: unknown) => {
+  if (typeof value !== 'string') return ''
+
+  return decodeAttribute(
+    value
+      .replace(/<br\s*\/?\s*>/gi, '\n')
+      .replace(/<\/(?:p|div|li|h[1-6]|blockquote)>/gi, '\n')
+      .replace(/<[^>]*>/g, '')
+      .replaceAll('&nbsp;', ' ')
+      .replaceAll('&lt;', '<')
+      .replaceAll('&gt;', '>')
+  )
+    .replace(/\n{3,}/g, '\n\n')
+    .trim()
+}
 
 const getAttribute = (tag: string, name: string) => {
   const match = tag.match(new RegExp(`(?:^|\\s)${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)')`, 'i'))
@@ -87,4 +108,27 @@ export function extractTumblrImages(post: TumblrPost): TumblrImage[] {
       }
     })
     .filter((image): image is TumblrImage => Boolean(image))
+}
+
+export function extractTumblrPostContent(post: TumblrPost): TumblrPostContent {
+  if (post.type === 'regular') {
+    const rawBody = typeof post['regular-body'] === 'string' ? post['regular-body'] : ''
+    const embeddedTitle = rawBody.match(/<h[1-6]\b[^>]*>([\s\S]*?)<\/h[1-6]>/i)
+    const title = htmlToText(post['regular-title']) || htmlToText(embeddedTitle?.[1])
+    const body = embeddedTitle ? rawBody.replace(embeddedTitle[0], '') : rawBody
+
+    return {
+      title,
+      body: htmlToText(body)
+    }
+  }
+
+  if (post.type === 'photo') {
+    return {
+      title: '',
+      body: htmlToText(post['photo-caption'])
+    }
+  }
+
+  return { title: '', body: '' }
 }

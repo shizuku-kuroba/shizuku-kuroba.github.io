@@ -23,11 +23,12 @@ const blog = defineCollection({
       updatedDate: z.coerce.date().optional(),
       heroImage: z
         .object({
-          src: image(),
+          src: z.union([image(), z.string().url()]),
           alt: z.string().optional(),
           inferSize: z.boolean().optional(),
           width: z.number().optional(),
           height: z.number().optional(),
+          position: z.string().optional(),
 
           color: z.string().optional()
         })

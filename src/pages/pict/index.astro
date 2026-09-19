@@ -1,7 +1,7 @@
 ---
 import PageLayout from '@/layouts/CommonPage.astro'
 import MasonryGrid from '@/components/pict/MasonryGrid.astro'
-import { extractTumblrImages } from '@/utils/tumblr'
+import { extractTumblrImages, extractTumblrPostContent } from '@/utils/tumblr'
 
 const headings: any[] = [] // Remove headings so TOC doesn't show up
 
@@ -10,6 +10,7 @@ let images: {
   id: string | number
   url: string
   title: string
+  description?: string
   tags: string[]
   width?: number
   height?: number
@@ -34,22 +35,9 @@ try {
   const data = JSON.parse(jsonString)
 
   data.posts.forEach((post: any) => {
-    let title = ''
     const postImages = extractTumblrImages(post)
     const previewImage = postImages[0]
-
-    if (post.type === 'photo') {
-      title = post['photo-caption']?.replace(/(<([^>]+)>)/gi, '').trim() || ''
-    } else if (post.type === 'regular' && post['regular-body']) {
-      if (previewImage) {
-        title =
-          post['regular-title'] ||
-          post['regular-body']
-            .replace(/(<([^>]+)>)/gi, '')
-            .substring(0, 50)
-            .trim()
-      }
-    }
+    const { title, body } = extractTumblrPostContent(post)
 
     if (previewImage) {
       const postTags = post.tags || []
@@ -81,6 +69,7 @@ try {
         id: post.id,
         url: previewImage.previewUrl,
         title: title,
+        description: body,
         tags: postTags,
         width: previewImage.width,
         height: previewImage.height

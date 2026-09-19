@@ -3,9 +3,11 @@ title: '瓷婚：從《黑執事》229話的扉頁意象探討結婚紀念習俗
 publishDate: '2026-09-19'
 description: '從《黑執事》連載二十週年與229話白瓷扉頁出發，整理西方結婚紀念習俗的歷史，並探討瓷婚象徵與主僕關係的呼應。'
 heroImage:
-  src: './black-butler-chapter-229-title-page.jpg'
-  alt: '《黑執事》Chapter 229 扉頁，圖片來源為 Yen Press'
-  color: '#e8e2dc'
+  src: 'https://images.yenpress.com/imgs/9798855450279.jpg?w=408&h=612&type=books&s=f657f3376745aa00aba7202f1a5585ca'
+  alt: '《黑執事》Chapter 229 扉頁'
+  width: 408
+  height: 612
+  position: 'center 40%'
 tags:
   - 黑執事
   - 文化考察
@@ -15,7 +17,6 @@ language: 'Chinese'
 draft: false
 ---
 
-*封面圖片來源：[Yen Press](https://images.yenpress.com/imgs/9798855450279.jpg?w=408&h=612&type=books&s=f657f3376745aa00aba7202f1a5585ca)*
 
 《黑執事》迎來連載二十週年，最新一話的扉頁中，枢やな老師以一組潔白的瓷器作為畫面的主要意象。
 
@@ -25,25 +26,21 @@ draft: false
 
 ## 一、結婚紀念習俗簡介
 
-結婚週年，是兩人又一年相伴的標記，標誌著夫妻關係的加深，也象徵無可取代的時光累積。為了慶祝這些特別的日子，人們會互贈禮物，每個結婚紀念日都有一份禮物，每份禮物都蘊含著獨特的物質和象徵意義。[1]
+結婚週年，是兩人又一年相伴的標記，標誌著夫妻關係的加深，也象徵無可取代的時光累積。為了慶祝這些特別的日子，人們會互贈禮物，每個結婚紀念日都有一份禮物，每份禮物都蘊含著獨特的物質和象徵意義。<a href='#reference-1'>[1]</a>
 
-從語言學的源頭來看，英文中代表婚姻的詞彙「**Wedlock**」，最早可追溯至古盎格魯-撒克遜語（Anglo-Saxon）的「**Wedlac**」。其中「_Wed_」（源自古英語 _wedden_，與希臘語 _wetten_ 相關）意為「**誓約（pledge）**」，而「_lac_」則代表「**禮物（gift）**」，兩者皆源於古諾斯語（Old Norse）的「_vethja_」，象徵著用以鞏固婚約與承諾的贈禮。[2]
+從語言學的源頭來看，英文中代表婚姻的詞彙「**Wedlock**」，最早可追溯至古盎格魯-撒克遜語（Anglo-Saxon）的「**Wedlac**」。其中「_Wed_」（源自古英語 _wedden_，與希臘語 _wetten_ 相關）意為「**誓約（pledge）**」，而「_lac_」則代表「**禮物（gift）**」，兩者皆源於古諾斯語（Old Norse）的「_vethja_」，象徵著用以鞏固婚約與承諾的贈禮。<a href='#reference-2'>[2]</a>
 
 ## 二、結婚紀念的歷史演變
 
-在各種結婚紀念日贈送特殊禮物的習俗起源於中歐。在中世紀的德國，當妻子與丈夫共同生活滿25年時，朋友們通常會贈送妻子一頂銀花環，作為祝賀與紀念。這項以特定禮物慶祝婚姻週年的習俗，長久以來主要透過民間口頭傳承保留下來。[3]
+在各種結婚紀念日贈送特殊禮物的習俗起源於中歐。在中世紀的德國，當妻子與丈夫共同生活滿25年時，朋友們通常會贈送妻子一頂銀花環，作為祝賀與紀念。這項以特定禮物慶祝婚姻週年的習俗，長久以來主要透過民間口頭傳承保留下來。<a href='#reference-3'>[3]</a>
 
 在二十世紀前，並非每一個結婚週年都有對應的象徵材質。1922年，禮儀專家艾米莉·普斯特（Emily Post）在《社交禮儀藍皮書》（_Etiquette_）中，列出了**8個廣為人知的傳統紀念日**，分別是結婚1週年、5週年、10週年、15週年、20週年、25週年、50週年與75週年。
 
-直到1937年，**美國全國零售珠寶商協會（American National Retail Jeweler Association）** 發布了一份更為全面的官方清單，其中正式指定了前20年的每一個紀念日、以及此後每五年一個紀念日（直至75週年，65週年除外）的紀念材質。[2]
+直到1937年，**美國全國零售珠寶商協會（American National Retail Jeweler Association）** 發布了一份更為全面的官方清單，其中正式指定了前20年的每一個紀念日、以及此後每五年一個紀念日（直至75週年，65週年除外）的紀念材質。<a href='#reference-2'>[2]</a>
 
 ## 三、各結婚週年的象徵年份與代表意義
 
-結婚紀念日象徵物的安排，也反映了夫妻關係隨時間推移而產生的變化。結髮初期，紀念物往往取材自日常常見、質地輕盈或具塑形空間的物品；隨著歲月累積，象徵物則漸次轉變為質地堅硬、稀有且高貴的金屬與寶石。[2]
-
-![結婚紀念象徵簡表，列出紙婚、木婚、錫婚、瓷婚、銀婚與金婚](./wedding-anniversary-summary.png)
-
-<p class='mt-2 text-center text-sm text-muted-foreground'>結婚週年象徵物的簡表，從紙婚、木婚、錫婚到瓷婚、銀婚與金婚，整理不同年份所寄託的意義。<br />（圖像由 GPT Image 2.5 輔助生成，後經本人編輯。）</p>
+結婚紀念日象徵物的安排，也反映了夫妻關係隨時間推移而產生的變化。結為連理的初期，紀念物往往取材自日常常見、質地輕盈或具塑形空間的物品；隨著歲月累積，象徵物則漸次轉變為質地堅硬、稀有且高貴的金屬與寶石。<a href='#reference-2'>[2]</a>
 
 - **第一週年（紙婚 Paper）**：象徵著兩人的共同生活如一張潔白無瑕的紙，充滿無限可能，但也需要細心呵護。
 - **第五週年（木 Wood）**：婚姻根基漸趨穩固，象徵成長與韌性。
@@ -51,7 +48,7 @@ draft: false
 - **第十五週年（水晶 Crystal）**：歷經磨合後，關係如水晶般透明純淨。
 - **第二十週年（瓷 China）**：圓融優雅，卻仍需細心呵護。
 
-當婚姻邁入二十五年以上的長遠歲月，象徵物便提升至極具珍藏價值的貴重材質。[2]
+當婚姻邁入二十五年以上的長遠歲月，象徵物便提升至極具珍藏價值的貴重材質。<a href='#reference-2'>[2]</a>
 
 - **第二十五週年（銀 Silver / Sterling Silver）**
 - **第三十週年（珍珠 Pearl）**
@@ -63,19 +60,24 @@ draft: false
 
 這些名貴材質不僅象徵著愛情歷經風雨後的無可摧毀，更體現了歲月洗禮下展現的耀眼光芒。
 
-## 四、第二十週年：瓷婚（China / Porcelain）的意涵
+![結婚紀念象徵簡表，列出紙婚、木婚、錫婚、瓷婚、銀婚與金婚](./wedding-anniversary-summary.png)
+
+<p class='image-caption'>結婚週年象徵物的簡表，從紙婚、木婚、錫婚到瓷婚、銀婚與金婚，整理不同年份所寄託的意義。<br />（圖像由 GPT Image 2.5 輔助生成，後經本人編輯。）</p>
+
+
+## 四、二十週年：瓷婚的意涵
 
 在眾多結婚紀念日中，**第二十週年——瓷婚（China / Porcelain）** 佔有極其特殊的歷史地位。
 
-傳統習俗中，第二十週年以「**China**」（精美中國陶瓷／瓷器）作為核心象徵。[4] 瓷器經過高溫淬鍊而生，表面光滑細緻、紋樣典雅，代表夫妻共同走過二十個春夏秋冬後，婚姻已脫離早期的青澀，打磨出優雅而圓融的質感。[2]
+傳統習俗中，第二十週年以「**China**」（精美中國陶瓷／瓷器）作為核心象徵。<a href='#reference-4'>[4]</a> 瓷器經過高溫淬鍊而生，表面光滑細緻、紋樣典雅，代表夫妻共同走過二十個春夏秋冬後，婚姻已脫離早期的青澀，打磨出優雅而圓融的質感。<a href='#reference-2'>[2]</a>
+
+然而，瓷器雖堅固珍貴，若不慎摔落仍有破裂的可能；這正好提醒牽手二十年的伴侶，即便彼此早已默契十足，依然需要像珍藏精美瓷器般，持續用心經營與呵護這份感情。<a href='#reference-2'>[2]</a>
+
+此外，在現代或替代性的週年贈禮清單中，第二十週年亦常與**白金（Platinum）** 相互對應，或將瓷器（Porcelain）作為經典禮品，展現歷久彌新的高貴質感。<a href='#reference-2'>[2]</a>
 
 ![青花瓷盤、茶杯與二十週年紀念卡，盤中放著一對戒指](./porcelain-anniversary-still-life.png)
 
-<p class='mt-2 text-center text-sm text-muted-foreground'>青花瓷器與二十週年紀念的意象圖；以瓷器的細緻與易碎，呼應瓷婚所蘊含的珍惜與呵護。<br />（圖像由 GPT Image 2.5 輔助生成，後經本人編輯。）</p>
-
-然而，瓷器雖堅固珍貴，若不慎摔落仍有破裂的可能；這正好提醒牽手二十年的伴侶，即便彼此早已默契十足，依然需要像珍藏精美瓷器般，持續用心經營與呵護這份感情。[2]
-
-此外，在現代或替代性的週年贈禮清單中，第二十週年亦常與**白金（Platinum）** 相互對應，或將瓷器（Porcelain）作為經典禮品，展現歷久彌新的高貴質感。[2]
+<p class='image-caption'>青花瓷器與二十週年紀念的意象圖；以瓷器的細緻與易碎，呼應瓷婚所蘊含的珍惜與呵護。<br />（圖像由 GPT Image 2.5 輔助生成，後經本人編輯。）</p>
 
 ## 結語
 
@@ -89,18 +91,22 @@ draft: false
 
 但也正因如此，這隻瓷器才如此令人著迷。
 
-*小小私心：最後放上一張以瓷婚為題的夢設與夢角小圖///*
+---
+
+*小小私心：最後放上一張以瓷婚為題的夢設與夢角小圖 (′▽`〃)*
 
 ![以瓷婚為主題的夢設與夢角婚禮小圖](./porcelain-wedding-yume.png)
 
-<p class='mt-2 text-center text-sm text-muted-foreground'>（圖像由 GPT Image 2.5 輔助生成，後經本人編輯。）</p>
+<p class='image-caption'>（圖像由 GPT Image 2.5 輔助生成，後經本人編輯。）</p>
 
 ## 參考資料
 
-[1] Scoble, G., & Field, A. (2003). _The Meaning of Wedding Anniversaries_. Chronicle Books.
+<p id='reference-1'>[1] Scoble, G., & Field, A. (2003). _The Meaning of Wedding Anniversaries_. Chronicle Books.</p>
 
-[2] Lee, C. (2001). _Wedding Anniversaries: From Paper to Diamond_. Ryland Peters & Small.
+<p id='reference-2'>[2] Lee, C. (2001). _Wedding Anniversaries: From Paper to Diamond_. Ryland Peters & Small.</p>
 
-[3] Stimpson, G. (1948). _Information Roundup_. Harper & Brothers.
+<p id='reference-3'>[3] Stimpson, G. (1948). _Information Roundup_. Harper & Brothers.</p>
 
-[4] Post, E. (1922). _Etiquette in Society, Business, Politics, and at Home_. Funk & Wagnalls.
+<p id='reference-4'>[4] Post, E. (1922). _Etiquette in Society, Business, Politics, and at Home_. Funk & Wagnalls.</p>
+
+封面圖片：引用自黑執事第229話「その執事、着到」扉頁，以外部連結嵌入方式顯示，圖片來源為 [Yen Press《Black Butler, Chapter 229》](https://yenpress.com/titles/9798855450279-black-butler-chapter-229)；本站未自行儲存、重新上傳或主張圖片權利。圖片著作權歸原權利人所有。

@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-pure/user'
 import PageLayout from '@/layouts/CommonPage.astro'
-import { extractTumblrImages } from '@/utils/tumblr'
+import { extractTumblrImages, extractTumblrPostContent } from '@/utils/tumblr'
 
 export const prerender = false
 
@@ -26,21 +26,8 @@ if (!post) {
   return Astro.redirect('/404')
 }
 
-let title = ''
 const images = extractTumblrImages(post)
-
-if (post.type === 'photo') {
-  title = post['photo-caption']?.replace(/(<([^>]+)>)/gi, '').trim() || ''
-} else if (post.type === 'regular' && post['regular-body']) {
-  if (images.length > 0) {
-    title =
-      post['regular-title'] ||
-      post['regular-body']
-        .replace(/(<([^>]+)>)/gi, '')
-        .substring(0, 50)
-        .trim()
-  }
-}
+const { title, body } = extractTumblrPostContent(post)
 
 if (images.length === 0) {
   return Astro.redirect('/404')
@@ -64,6 +51,14 @@ const headings: any[] = []
 
 <PageLayout title={title || 'PICT Detail'} {headings} view>
   <div class='mx-auto flex flex-col gap-6 pt-4 pb-12 w-full'>
+    {
+      body && (
+        <div class='mx-auto w-full max-w-3xl px-2 sm:px-4'>
+          <p class='m-0 whitespace-pre-line leading-relaxed text-muted-foreground'>{body}</p>
+        </div>
+      )
+    }
+
     <div class='flex w-full flex-col gap-5'>
       {
         images.map((image, index) => (
