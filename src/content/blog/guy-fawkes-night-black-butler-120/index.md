@@ -5,7 +5,7 @@ description: '從《黑執事》第120話提到的 Guy Fawkes Night 出發，整
 heroImage:
   src: './guy-fawkes-effigy.jpg'
   alt: '篝火上的 Guy Fawkes 人偶'
-  position: 'center center'
+  position: 'center 35%'
 tags:
   - 黑執事
   - 英國文化
@@ -122,13 +122,17 @@ Guy Fawkes Night 的核心則是紀念1605年火藥陰謀失敗，並透過篝�
 - Guy Fawkes 大約自1790年起成為篝火人偶的主要形象。
 - 「penny for the Guy」讓孩子以自製人偶、街區行走與索取硬幣的方式參與節慶。
 
-## Sources
+## 參考資料
 
-[1] https://www.parliament.uk/about/living-heritage/evolutionofparliament/parliamentaryauthority/the-gunpowder-plot-of-1605/overview/the-plot-and-its-discovery/discovery-and-flight1 — UK Parliament: Discovery and flight
-[2] https://www.parliament.uk/about/living-heritage/evolutionofparliament/parliamentaryauthority/the-gunpowder-plot-of-1605/overview/aftermath/commemoration- — UK Parliament: Commemoration of the Gunpowder Plot
-[3] https://www.londonmuseum.org.uk/collections/london-stories/symbolism-of-guy-fawkes — London Museum: The symbolism of Guy Fawkes
-[4] https://www.londonmuseum.org.uk/collections/london-stories/penny-for-the-guy-lost-bonfire-night-tradition — London Museum: Penny for the Guy
-[5] https://www.smithsonianmag.com/history/celtic-origins-trick-treating-halloween-180984916 — Smithsonian Magazine: The Celtic Origins of Trick-or-Treating
+<p id='reference-1'>[1] UK Parliament. <em>Discovery and flight</em>. https://www.parliament.uk/about/living-heritage/evolutionofparliament/parliamentaryauthority/the-gunpowder-plot-of-1605/overview/the-plot-and-its-discovery/discovery-and-flight1</p>
+
+<p id='reference-2'>[2] UK Parliament. <em>Commemoration of the Gunpowder Plot</em>. https://www.parliament.uk/about/living-heritage/evolutionofparliament/parliamentaryauthority/the-gunpowder-plot-of-1605/overview/aftermath/commemoration-</p>
+
+<p id='reference-3'>[3] London Museum. <em>The symbolism of Guy Fawkes</em>. https://www.londonmuseum.org.uk/collections/london-stories/symbolism-of-guy-fawkes</p>
+
+<p id='reference-4'>[4] London Museum. <em>Penny for the Guy</em>. https://www.londonmuseum.org.uk/collections/london-stories/penny-for-the-guy-lost-bonfire-night-tradition</p>
+
+<p id='reference-5'>[5] Smithsonian Magazine. <em>The Celtic Origins of Trick-or-Treating</em>. https://www.smithsonianmag.com/history/celtic-origins-trick-treating-halloween-180984916</p>
 
 ## 圖像來源
 
