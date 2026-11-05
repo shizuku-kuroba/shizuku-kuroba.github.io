@@ -1,5 +1,5 @@
 ---
-title: 'Guy Fawkes Night：萬聖節後緊接著登場的煙火之夜'
+title: '【黑知識】Guy Fawkes Night：萬聖節後緊接著登場的煙火之夜'
 publishDate: '2026-11-05'
 description: '從《黑執事》第120話提到的 Guy Fawkes Night 出發，整理1605年火藥陰謀、11月5日紀念制度、篝火、人偶、面具與「penny for the Guy」習俗。'
 heroImage:
